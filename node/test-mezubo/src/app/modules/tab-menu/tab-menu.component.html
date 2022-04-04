@@ -1,0 +1,27 @@
+<p-tabView [(activeIndex)]="activeIndex">
+    <p-tabPanel header="Crear ruleta" [selected]="true">
+        <app-create-roulette #createRoulette></app-create-roulette>
+    </p-tabPanel>
+    <p-tabPanel header="Apertura de ruleta">
+        <app-open-roulette></app-open-roulette>
+    </p-tabPanel>
+    <p-tabPanel header="Apostar en ruleta">
+        <app-form-bet></app-form-bet>
+    </p-tabPanel>
+    <p-tabPanel header="Cierre ruletas">
+        <p-tabView [(activeIndex)]="activeIndexClose">
+            <p-tabPanel header="Cerrar ruleta" [selected]="true">
+                <h5>Ingrese el número de la ruleta a cerrar.</h5>
+                <input type="number" id="idRoulette" pInputText [(ngModel)]="idRouletteClose">
+                <button (click)="listBet.closeRoulette(idRouletteClose); closeRoulette()"  pButton pRipple type="button" label="Cerrar ruleta" ></button>
+            </p-tabPanel>
+            <p-tabPanel header="Ruleta cerrada con apuestas">
+                <app-list-bets [idRouletteClose]="idRouletteClose" [showListBets]="showListBets" #listBet></app-list-bets>
+            </p-tabPanel>
+        </p-tabView>
+    </p-tabPanel>
+    <p-tabPanel header="Listar ruletas">
+        <button (click)="getListRoulettes()" pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-outlined"></button>
+        <app-list-roulettes [listRoulettes]="listRoulettes" #listAllRoulettes></app-list-roulettes>
+    </p-tabPanel>
+</p-tabView>

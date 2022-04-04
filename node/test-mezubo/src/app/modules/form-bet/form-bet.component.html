@@ -1,0 +1,36 @@
+<div class="form">
+    <h4>Registro de apuestas</h4>
+    <div class="grid p-fluid" [formGroup]="form">
+        <div class="col-12">
+            <h5>Número de ruleta:</h5>
+            <div class="input-form">
+                <input type="number" pInputText placeholder="Número ruleta" formControlName="idRoulette">
+            </div>
+        </div>
+        <div class="col-12">
+            <h5>Número a apostar - entre 0 y 36: </h5>
+            <div class="input-form">
+                <input type="number" pInputText placeholder="Número apuesta" formControlName="betNumber" maxlength="2">
+            </div>
+        </div>
+        <div class="p-field-checkbox">
+            <h5>Color de apuesta: </h5>
+            <p-checkbox class="form-checkbox" formControlName="betColor" [binary]="true" inputId="binary" (click)="changeColor()">
+            </p-checkbox>
+            <label for="binary" *ngIf="changeColorInput">Rojo</label>
+            <label for="binary" *ngIf="!changeColorInput">Negro</label>
+        </div>
+
+        <div class="col-12">
+            <h5>Mónto de la apuesta: </h5>
+            <div class="input-form">
+                <input id="amount-money" type="number" pInputText formControlName="amountMoney" maxlength="5">
+            </div>
+        </div>
+    </div>
+    <div class="input-form">
+        <button (click)="addBet()"  pButton pRipple type="button" label="Apostar" [disabled]="!form.valid"></button>
+    </div>
+</div>
+
+<p-toast position="top-center" key="sc"></p-toast>

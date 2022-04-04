@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    padding: 2rem;
+    margin: 0;
+    font-family: 'Roboto Condensed',
+    sans-serif;
+}
+
+.header-table-align {
+    text-align: center !important;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 100%;
+}
+
+.left {
+    display: flex;
+    place-items: center;
+    justify-content: left;
+    overflow-y: auto;
+}
+
+.left h1 {
+    color: #000000;
+    font-size: 50px;
+}
+
+.left p {
+    color: #000000;
+    font-size: 20px;
+}
+
+.right {
+    place-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.right h1 {
+    color: #000000;
+    font-size: 50px;
+}
+
+.right p {
+    color: #000000;
+    font-size: 20px;
+}
+
+@media (max-width:900px) {
+    .container {
+        grid-template-columns: 3fr 1fr;
+    }
+}

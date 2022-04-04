@@ -1,0 +1,8 @@
+<div>
+    <h5>Ingrese el número de la ruleta para la apertura.</h5>
+    <input type="number" id="idRoulette" pInputText [(ngModel)]="idRouletteOpen">
+    <button (click)="openRoulette(idRouletteOpen)" pButton pRipple type="button"
+        label="Apertura de ruleta"></button>
+</div>
+
+<p-toast position="top-center" key="sc"></p-toast>
