@@ -29,10 +29,8 @@
                     <label *ngIf="item.WINNERCOLOR == 1">Rojo</label>
                     <label *ngIf="item.WINNERCOLOR == 0">Negro</label>
                 </th>
-                <th scope="row" *ngIf="item.BETNUMBER != item.WINNERNUMBER">{{item.AMOUNTMONEY * 0}}</th>
-                <th scope="row" *ngIf="item.BETNUMBER == item.WINNERNUMBER">{{item.AMOUNTMONEY * 5}}</th>
-                <th scope="row" *ngIf="item.BETCOLOR != item.WINNERCOLOR">{{item.AMOUNTMONEY * 0}}</th>
-                <th scope="row" *ngIf="item.BETCOLOR == item.WINNERCOLOR">{{item.AMOUNTMONEY * 1.8}}</th>
+                <th scope="row">{{item.AMOUNTMONEYNUMBER}}</th>
+                <th scope="row">{{item.AMOUNTMONEYCOLOR}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft" let-state>

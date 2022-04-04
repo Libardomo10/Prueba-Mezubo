@@ -22,7 +22,7 @@ export class FormBetComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
-      idRoulette: new FormControl(0, [Validators.required]),
+      idRoulette: new FormControl(null, [Validators.required]),
       betNumber: new FormControl(null, [Validators.min(0), Validators.max(36), Validators.required]),
       betColor: new FormControl(this.changeColorInput, [Validators.required]),
       amountMoney: new FormControl(null, [Validators.max(10000), Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.required])

@@ -1,4 +1,5 @@
 const rouletteModel = require('../models/roulette');
+const rouletteController = require('../controllers/rouletteController');
 module.exports = app => {
     app.use((req, res, next) => {
         var origin = req.headers.origin;
@@ -53,16 +54,18 @@ module.exports = app => {
         });
     });
     app.put('/rouletteoff/:id', (req, res) => {
-        const winnerNumber = between(0, 36);
+        const dataComplete = [];
+        const winnerNumber = rouletteController.between(0, 36);
         const rouletteData = {
             idRoulette: req.params.id,
             opening: false,
             winnernumber: winnerNumber,
-            winnercolor: color(winnerNumber)
+            winnercolor: rouletteController.color(winnerNumber)
         };
         rouletteModel.updateRouletteOff(rouletteData, function (err, data) {
             if (data && data.msg) {
                 rouletteModel.earnedMoney(rouletteData, (err, data) => {
+                    data = rouletteController.amountWin(data);
                     res.status(200).json(data);
                 });
             } else {
@@ -78,12 +81,4 @@ module.exports = app => {
             res.status(200).json(data);
         });
     });
-}
-function between(min, max) {
-    return Math.floor(
-        Math.random() * (max - min) + min
-    )
-}
-function color(number) {
-    return (number % 2) == 0 ? 1 : 0;
 }
